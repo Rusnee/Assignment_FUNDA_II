@@ -11,23 +11,29 @@ public class Enemy extends Sprite{
 	private int step = 12;
 	private boolean alive = true;
 	
-	public Enemy(int x, int y){
-		super(x, y, 5, 10);
+	public Enemy(int x, int y) {
+		super(x, y, 5, 15);
+
 	}
-	
+
 	@Override
-	public void draw(Graphics2D g){
+	public void draw(Graphics2D g) {
 		if(y < Y_TO_FADE)
 			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
 		else{
 			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 
 					(float)(Y_TO_DIE - y)/(Y_TO_DIE - Y_TO_FADE)));
 		}
-		g.setColor(Color.RED);
+
+		if(Math.random() >= 0.5)
+			g.setColor(Color.PINK);
+		else if(Math.random() < 0.5)
+			g.setColor(Color.RED);
+
 		g.fillRect(x, y, width, height);
 		
 	}
-	
+
 	public void proceed(){
 		y += step;
 		if(y > Y_TO_DIE){
@@ -35,11 +41,8 @@ public class Enemy extends Sprite{
 		}
 	}
 	
-	public void hit(){
-		alive = false;
-	}
-	
 	public boolean isAlive(){
 		return alive;
+		
 	}
 }

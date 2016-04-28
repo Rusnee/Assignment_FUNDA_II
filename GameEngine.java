@@ -13,27 +13,26 @@ import javax.swing.Timer;
 
 public class GameEngine implements KeyListener, GameReporter{
 	GamePanel gp;
-	
-	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+		
+	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();	
 	private SpaceShip v;	
 	
 	private Timer timer;
 	
 	private long score = 0;
-	private double difficulty = 0.1;
+	private double difficulty = 0.2;
 	
-	public GameEngine(GamePanel gp, SpaceShip v){
+	public GameEngine(GamePanel gp, SpaceShip v) {
 		this.gp = gp;
-		this.v = v;
+		this.v = v;		
 		
 		gp.sprites.add(v);
 		
-		timer = new Timer(50, new ActionListener(){
+		timer = new Timer(50, new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				process();
-				checkSpaceShip();
 			}
 		});
 		timer.setRepeats(true);
@@ -70,13 +69,10 @@ public class GameEngine implements KeyListener, GameReporter{
 		
 		Rectangle2D.Double vr = v.getRectangle();
 		Rectangle2D.Double er;
-		
 		for(Enemy e : enemies){
 			er = e.getRectangle();
 			if(er.intersects(vr)){
-				//die();
-				v.hit();
-				e.hit();
+				die();
 				return;
 			}
 		}
@@ -86,43 +82,42 @@ public class GameEngine implements KeyListener, GameReporter{
 		timer.stop();
 	}
 	
-	void controlVehicle(KeyEvent e){
-		switch(e.getKeyCode()) {
+	void controlVehicle(KeyEvent e) {
+		switch (e.getKeyCode()) {
 		case KeyEvent.VK_LEFT:
-			v.move(-1, 0);
+			v.moveX(-1);
 			break;
 		case KeyEvent.VK_RIGHT:
-			v.move(1, 0);
+			v.moveX(1);
+			break;
+		case KeyEvent.VK_Z:
+			v.moveX(-10);
+			break;
+		case KeyEvent.VK_X:
+			v.moveX(10);
 			break;
 		case KeyEvent.VK_UP:
-			v.move(0, -1);
+			v.moveY(-1);
 			break;
 		case KeyEvent.VK_DOWN:
-			v.move(0, 1);
+			v.moveY(1);
+			break;
 		case KeyEvent.VK_D:
-			difficulty += 0.1;
+			difficulty += 0.2;
 			break;
 		}
 	}
-	
+
 	public long getScore(){
 		return score;
-	}
-	
-	public int getHP(){
-		return v.gethp();
-	}
-	
-	public void checkSpaceShip(){
-		if(!v.isAlive())
-			die();
 	}
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		controlVehicle(e);
+		
 	}
-	
+
 	@Override
 	public void keyReleased(KeyEvent e) {
 		//do nothing
