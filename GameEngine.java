@@ -8,6 +8,12 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+//Show message score after die
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+
+
+
 import javax.swing.Timer;
 
 
@@ -168,6 +174,11 @@ public class GameEngine implements KeyListener, GameReporter{
 	
 	public void die(){
 		timer.stop();
+		//Show message score after die
+		JFrame frame = new JFrame();
+		JOptionPane.showMessageDialog(frame, "SCORE : " + getScore());
+		
+		
 	}
 	
 	void controlVehicle(KeyEvent e) {
@@ -190,14 +201,12 @@ public class GameEngine implements KeyListener, GameReporter{
 		
 		}
 	}
-
+    //score
 	public long getScore(){
 		return score;
 	}
 	
-	/*public int getHP(){
-		return v.gethp();
-	}*/
+	
 	
 	public void chkSpaceShip(){
 		if(!v.isAlive())
