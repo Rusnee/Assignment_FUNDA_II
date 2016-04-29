@@ -1,3 +1,5 @@
+//package f2.spw;
+
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -5,7 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.Image;
 
-public class Enemy extends Sprite{
+public class Item extends Sprite{
 	public static final int Y_TO_FADE = 400;
 	public static final int Y_TO_DIE = 600;
 	
@@ -13,7 +15,7 @@ public class Enemy extends Sprite{
 	private boolean alive = true;
 	
 	
-	public Enemy(int x, int y) {
+	public Item(int x, int y) {
 		super(x, y, 30, 40);
 		
 	}
@@ -31,7 +33,7 @@ public class Enemy extends Sprite{
 		//g.fillRect(x, y, width, height);
 		
 		
-		Image pic = Toolkit.getDefaultToolkit().getImage("alien.png"); 
+		Image pic = Toolkit.getDefaultToolkit().getImage("item.gif"); 
 		g.drawImage(pic, x, y, width, height, null);
 		
 	}
