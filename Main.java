@@ -17,16 +17,10 @@ public class Main {
                 JMenuBar menubar = new JMenuBar();
                 JMenu menuMain = new JMenu("Menu");
                 JMenu menuAbout = new JMenu("Exit");
-                JMenuItem menuRestart =new JMenuItem("Resume");
+                JMenuItem menuRestart =new JMenuItem("START");
                 JMenuItem menuExit = new JMenuItem("Exit");
-                JMenuItem menuStop = new JMenuItem("Pause");
-                //JMenuItem menuCredit = new JMenuItem("Credit");      
-                //menuMain.setFont(fn);
-                //menuAbout.setFont(fn);
-                //menuRestart.setFont(fn);
-                //menuExit.setFont(fn);
-                //menuStop.setFont(fn);
-                //menuCredit.setFont(fn);
+                JMenuItem menuStop = new JMenuItem("STOP");
+              
                 menuMain.add(menuRestart);
                 menuMain.add(menuStop);
                 //menuMain.add(menuExit);

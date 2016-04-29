@@ -55,9 +55,7 @@ public class SpaceShip extends Sprite{
 			}		
 	}
 
-	/*public int gethp() {
-		return hp;
-	}*/
+	
 	
 	public boolean isAlive(){
 		return alive;
